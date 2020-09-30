@@ -1,0 +1,13 @@
+{
+  "name": "blogginator",
+  "version": "1.0.0",
+  "description": "content management system",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Justin Edwards",
+  "license": "ISC"
+}
