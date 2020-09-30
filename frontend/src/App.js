@@ -12,7 +12,7 @@ function App() {
   // fetch from api
   const handleSayHelloPress = async (event) => {
     event.preventDefault();
-    let response = await fetch('/greeting?name=' + name);
+    let response = await fetch('http://localhost:8080/greeting?name=' + name);
     let body = await response.json();
     setGreeting(body.name);
     setIsLoading(false);
