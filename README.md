@@ -10,15 +10,15 @@ accessed at http://localhost:8080.
 
 **Steps For Production**
 
-1. Navigate to the project directory in the command line then run: 
+1. Build using the docker-compose file (this may take a while)
 
-    `./mvnw clean install`
+    `docker-compose build`
     
 2. Crack open a cold one and wait a minute for everything to install, then run:
 
-    `./mvnw spring-boot:run`
+    `docker-compose up`
     
-3. Go to http://localhost:8080
+3. Go to http://localhost:3000
 
 **Steps For Development**
 
