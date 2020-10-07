@@ -12,17 +12,33 @@ function App() {
   // fetch from api
   const handleSayHelloPress = async (event) => {
     event.preventDefault();
+    // TODO: change url to environment var
     let response = await fetch('http://localhost:8080/greeting?name=' + name);
     let body = await response.json();
     setGreeting(body.name);
     setIsLoading(false);
   }
-  //
+
+  // useEffect(() => {
+  //   console.log(greeting);
+  // }, [greeting])
+
+  // as input is changed, set state appropriately
   const onNameInput = (event) => {
     event.preventDefault();
     setName(event.target.value);
     setIsLoading(false);
   }
+
+  // // example arrow function
+  // const example = (test) => {
+  //   console.log(test);
+  // }
+  //
+  // // example regular function
+  // function example(test) {
+  //   console.log(test);
+  // }
 
   return (
       !isLoading ?
@@ -31,7 +47,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <form>
           <input onChange={(event) => {onNameInput(event)}} placeholder="Enter Your Name..." />
-          <button onClick={(event) => {handleSayHelloPress(event)}}>Say Hello!</button>
+          <button onClick={handleSayHelloPress}>Say Hello!</button>
         </form>
 
         <p>{greeting}</p>
