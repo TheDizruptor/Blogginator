@@ -15,7 +15,7 @@
 	<description>Content management system made for CS 4230</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 <!--		<frontend-maven-plugin.version>1.10.0</frontend-maven-plugin.version>-->
 		<node.version>v10.13.0</node.version>
 		<yarn.version>1.22.5</yarn.version>
