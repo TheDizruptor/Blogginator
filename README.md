@@ -36,3 +36,33 @@ your IDE of choice and run it.
     
 4. It should open up your browser automatically, but if it doesn't, 
 go to http://localhost:3000
+
+DATABASE SETUP:
+
+In the production environment, the database will be set up through docker.
+However, for local development it's in our best interest to run MySQL in a 
+docker container for rapid development and testing. 
+
+1. First, we need to pull the appropriate docker image for MySQL. To do this, 
+type the following command into the command line:
+
+    `docker pull mysql/mysql-server:latest`
+    
+2. Verify the image is stored locally by listing the downloaded docker images: 
+
+    `docker images`
+    
+You should see an image called mysql/mysql-server or something like that
+
+3. Run the docker container, mapping the container port (3306) to localhost. 
+
+    `docker run -d -p 3306:3306 --name=cs4230 --env="MYSQL_ROOT_PASSWORD=password" mysql`
+
+4. Open the mysql cli using the following command:
+
+    `docker exec -it cs4230 mysql -uroot -p`
+
+The password is what we set above for the MYSQL_ROOT_PASSWORD so in this case... 
+The all powerful, very secure 'password' password.
+
+5. Type: `show databases;` to see    
