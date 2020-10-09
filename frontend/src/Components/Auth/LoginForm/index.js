@@ -145,16 +145,16 @@ function LoginForm(props) {
       // call, it would cause problems. I recommend getting familiar with 
       // .then().catch() syntax
       AuthService.executeBasicAuthService(email, password)
-      .then((response) => {
-        console.log(response); // helpful for understanding response
-        AuthService.registerSuccessfulLogin(email, password);
-        props.history.push(`/greeting`);
-      })
-      .catch((error) => {
-        console.log("Error: ", error);  // helpful for understanding error response
-        // this error might not be due to incorrect u/p but we can deal with that later
-        setSignInError("Incorrect username or password"); // sets error
-      })
+      // .then((response) => {
+        // console.log(response); // helpful for understanding response
+        // AuthService.registerSuccessfulLogin(email, password);
+        // props.history.push(`/greeting`);
+      // })
+      // .catch((error) => {
+      //   console.log("Error: ", error);  // helpful for understanding error response
+      //   // this error might not be due to incorrect u/p but we can deal with that later
+      //   setSignInError("Incorrect username or password"); // sets error
+      // })
     }
   }
   /* #endregion */

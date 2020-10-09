@@ -24,34 +24,40 @@ class AuthService {
   // is used by springboot security (like magic it seems) and is built using
   // createBasicAuthToken
   executeBasicAuthService(email, password) {
-    return axios.get(`${API_URL}${AUTH_API_URL}`, { headers: { authorization: this.createBasicAuthToken(email, password)}});
+
+    const formData = new FormData();
+    formData.append("username", email);
+    formData.append("password", password);
+
+    axios.post(`http://localhost:8080/login`, { headers: { "Content-Type": "application/x-www-form-urlencoded" }}, formData);
+    // return axios.get(`${API_URL}${AUTH_API_URL}`, { headers: { authorization: this.createBasicAuthToken(email, password)}});
   }
   // this returns a base64 encoded string which is the format 
   // required for the authorization: <token> header in 
   // the baove function
-  createBasicAuthToken(email, password) {
-    return ('Basic ' + window.btoa(email + ":" + password));
-  }
-  // this sets the value in sessionStorage to flag that a user is 
-  // signed in. Calls the below function to add an interceptor
-  registerSuccessfulLogin(email, password) {
-    sessionStorage.setItem(EMAIL_SESSION_ATTRIBUTE_NAME, email);
-    this.setupAxiosInterceptors(this.createBasicAuthToken(email, password));
-  }
-  // axios interceptors intercept (surprise) every single 
-  // request axios is going to make and adds something to it. 
-  // in this case, if the user is logged in it adds the user's
-  // base 64 encoded token
-  setupAxiosInterceptors(token) {
-    axios.interceptors.request.use(
-      (config) => {
-        if (this.isUserLoggedIn()) {
-          config.headers.authorization = token;
-        }
-        return config;
-      }
-    )
-  }
+  // createBasicAuthToken(email, password) {
+  //   return ('Basic ' + window.btoa(email + ":" + password));
+  // }
+  // // this sets the value in sessionStorage to flag that a user is 
+  // // signed in. Calls the below function to add an interceptor
+  // registerSuccessfulLogin(email, password) {
+  //   sessionStorage.setItem(EMAIL_SESSION_ATTRIBUTE_NAME, email);
+  //   this.setupAxiosInterceptors(this.createBasicAuthToken(email, password));
+  // }
+  // // axios interceptors intercept (surprise) every single 
+  // // request axios is going to make and adds something to it. 
+  // // in this case, if the user is logged in it adds the user's
+  // // base 64 encoded token
+  // setupAxiosInterceptors(token) {
+  //   axios.interceptors.request.use(
+  //     (config) => {
+  //       if (this.isUserLoggedIn()) {
+  //         config.headers.authorization = token;
+  //       }
+  //       return config;
+  //     }
+  //   )
+  // }
 }
 
 export default new AuthService()
