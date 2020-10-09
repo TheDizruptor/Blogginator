@@ -43,6 +43,7 @@ public class SpringSecurityConfigurationBasicAuth extends WebSecurityConfigurerA
                 .and()
                 .formLogin()
                 .successHandler(new CustomAuthenticationSuccessHandler())
-                .loginProcessingUrl("/login");
+                .loginProcessingUrl("/login")
+                .defaultSuccessUrl("/greeting");
     }
 }

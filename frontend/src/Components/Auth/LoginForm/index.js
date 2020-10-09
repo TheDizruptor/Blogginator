@@ -144,7 +144,11 @@ function LoginForm(props) {
       // of the .then() and move them below the AuthService.execute ... 
       // call, it would cause problems. I recommend getting familiar with 
       // .then().catch() syntax
-      AuthService.executeBasicAuthService(email, password)
+      AuthService.executeBasicAuthService(email, password).then((response) => {
+        console.log(response);
+        props.history.push('/greeting');
+        AuthService.registerSuccessfulLogin(email, password);
+      })
       // .then((response) => {
         // console.log(response); // helpful for understanding response
         // AuthService.registerSuccessfulLogin(email, password);

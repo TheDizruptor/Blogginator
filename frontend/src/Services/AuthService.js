@@ -29,7 +29,7 @@ class AuthService {
     formData.append("username", email);
     formData.append("password", password);
 
-    axios.post('http://localhost:8080/login', formData, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }});
+    return axios.post('http://localhost:8080/login', formData, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }});
     // return axios.get(`${API_URL}${AUTH_API_URL}`, { headers: { authorization: this.createBasicAuthToken(email, password)}});
   }
   // this returns a base64 encoded string which is the format 
@@ -40,10 +40,10 @@ class AuthService {
   // }
   // // this sets the value in sessionStorage to flag that a user is 
   // // signed in. Calls the below function to add an interceptor
-  // registerSuccessfulLogin(email, password) {
-  //   sessionStorage.setItem(EMAIL_SESSION_ATTRIBUTE_NAME, email);
-  //   this.setupAxiosInterceptors(this.createBasicAuthToken(email, password));
-  // }
+  registerSuccessfulLogin(email, password) {
+    sessionStorage.setItem(EMAIL_SESSION_ATTRIBUTE_NAME, email);
+    // this.setupAxiosInterceptors(this.createBasicAuthToken(email, password));
+  }
   // // axios interceptors intercept (surprise) every single 
   // // request axios is going to make and adds something to it. 
   // // in this case, if the user is logged in it adds the user's
