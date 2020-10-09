@@ -29,7 +29,7 @@ class AuthService {
     formData.append("username", email);
     formData.append("password", password);
 
-    axios.post(`http://localhost:8080/login`, { headers: { "Content-Type": "application/x-www-form-urlencoded" }}, formData);
+    axios.post('http://localhost:8080/login', formData, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' }});
     // return axios.get(`${API_URL}${AUTH_API_URL}`, { headers: { authorization: this.createBasicAuthToken(email, password)}});
   }
   // this returns a base64 encoded string which is the format 
